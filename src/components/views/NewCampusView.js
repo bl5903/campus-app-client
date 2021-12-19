@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles( () => ({
-  formContainer:{
+
     width: '500px',
     backgroundColor: '#f0f0f5',
     borderRadius: '5px',
@@ -16,7 +16,7 @@ const useStyles = makeStyles( () => ({
     flexGrow: 1,
     textAlign: 'left',
     textDecoration: 'none'
-  },
+
   customizeAppBar:{
     backgroundColor: '#11153e',
     shadows: ['none'],
@@ -45,12 +45,15 @@ const NewCampusView = (props) => {
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
 
+
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Name: </label>
           <input type="text" name="name" onChange ={(e) => handleChange(e)} />
+
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+
           <input type="text" name="description" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
@@ -62,6 +65,7 @@ const NewCampusView = (props) => {
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Address: </label>
           <input type="text" name="address" onChange={(e) => handleChange(e)} />
+
           <br/>
           <br/>
 
@@ -79,7 +83,9 @@ const NewCampusView = (props) => {
         </div>
       </div>
 
+
   )
 }
 
 export default NewCampusView;
+

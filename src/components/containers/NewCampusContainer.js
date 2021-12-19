@@ -10,12 +10,14 @@ class NewCampusContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
+
           name: "",
           description: "",
           imageUrl: "",
           address: "",
           campusId: null,
           redirect: false,
+
           redirectId: null
         };
     }
@@ -30,6 +32,7 @@ class NewCampusContainer extends Component {
         event.preventDefault();
 
         let campus = {
+
             campusname: this.state.name,
             description: this.state.description,
             imageUrl: this.state.imageUrl,
@@ -48,6 +51,7 @@ class NewCampusContainer extends Component {
           address: "",
           campusId: null,
           redirect: true,
+
           redirectId: newCampus.id
         });
     }
@@ -61,9 +65,11 @@ class NewCampusContainer extends Component {
           return (<Redirect to={`/campus/${this.state.redirectId}`}/>)
         }
         return (
+
           <NewCampusView
             handleChange = {this.handleChange}
             handleSubmit={this.handleSubmit}
+
           />
         );
     }
@@ -75,4 +81,6 @@ const mapDispatch = (dispatch) => {
     })
 }
 
+
 export default connect(null, mapDispatch)(NewCampusContainer);
+
