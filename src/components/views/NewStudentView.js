@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles( () => ({
-  formContainer:{  
+  formContainer:{
     width: '500px',
     backgroundColor: '#f0f0f5',
     borderRadius: '5px',
@@ -16,7 +16,7 @@ const useStyles = makeStyles( () => ({
     flexGrow: 1,
     textAlign: 'left',
     textDecoration: 'none'
-  }, 
+  },
   customizeAppBar:{
     backgroundColor: '#11153e',
     shadows: ['none'],
@@ -28,7 +28,7 @@ const useStyles = makeStyles( () => ({
     borderRadius: '5px 5px 0px 0px',
     padding: '3px'
   },
-  
+
 }));
 
 const NewStudentView = (props) => {
@@ -44,6 +44,7 @@ const NewStudentView = (props) => {
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
+
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
           <input type="text" name="firstname" onChange ={(e) => handleChange(e)} />
           <br/>
@@ -51,6 +52,21 @@ const NewStudentView = (props) => {
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
           <input type="text" name="lastname" onChange={(e) => handleChange(e)} />
+          <br/>
+          <br/>
+
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
+          <input type="text" name="email" onChange={(e) => handleChange(e)} />
+          <br/>
+          <br/>
+
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Image: </label>
+          <input type="text" name="imageUrl" onChange={(e) => handleChange(e)} />
+          <br/>
+          <br/>
+
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
+          <input type="text" name="gpa" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
@@ -67,7 +83,7 @@ const NewStudentView = (props) => {
         </form>
         </div>
       </div>
-    
+
   )
 }
 
