@@ -10,10 +10,14 @@ class NewCampusContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-          campusname: "", 
-          description: "", 
-          campusId: null, 
-          redirect: false, 
+
+          name: "",
+          description: "",
+          imageUrl: "",
+          address: "",
+          campusId: null,
+          redirect: false,
+
           redirectId: null
         };
     }
@@ -28,18 +32,26 @@ class NewCampusContainer extends Component {
         event.preventDefault();
 
         let campus = {
-            campusname: this.state.campusname,
+
+            campusname: this.state.name,
             description: this.state.description,
+            imageUrl: this.state.imageUrl,
+            address: this.state.address,
             campusId: this.state.campusId
         };
-        
+        if(campus.imageUrl.length===0){
+          campus.imageUrl = "https://www.uc.edu/news/articles/2021/08/n21024100/jcr:content/image.img.cq5dam.thumbnail.500.500.jpg/1628635953156"
+        }
         let newCampus = await this.props.addCampus(campus);
 
         this.setState({
-          campusname: "", 
-          description: "", 
-          campusId: null, 
-          redirect: true, 
+          name: "",
+          description: "",
+          imageUrl: "",
+          address: "",
+          campusId: null,
+          redirect: true,
+
           redirectId: newCampus.id
         });
     }
@@ -53,9 +65,11 @@ class NewCampusContainer extends Component {
           return (<Redirect to={`/campus/${this.state.redirectId}`}/>)
         }
         return (
-          <NewCampusView 
-            handleChange = {this.handleChange} 
-            handleSubmit={this.handleSubmit}      
+
+          <NewCampusView
+            handleChange = {this.handleChange}
+            handleSubmit={this.handleSubmit}
+
           />
         );
     }
@@ -67,4 +81,6 @@ const mapDispatch = (dispatch) => {
     })
 }
 
+
 export default connect(null, mapDispatch)(NewCampusContainer);
+

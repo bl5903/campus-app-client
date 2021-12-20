@@ -13,9 +13,38 @@ export const fetchAllCampusesThunk = () => async (dispatch) => {
   }
 };
 
+export const addCampusThunk = (campus) => async (dispatch) => {
+  try {
+    let res = await axios.post(`/api/campuses`, campus);
+    dispatch(ac.addCampus(res.data));
+    return res.data;
+  } catch(err) {
+    console.error(err);
+  }
+};
+
+export const deleteCampusThunk = campusId => async dispatch => {
+  try {
+    await axios.delete(`/api/campuses/${campusId}`);
+    //delete succesful so change state with dispatch
+    dispatch(ac.deleteCampus(campusId));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
+export const editCampusThunk = campus => async dispatch => {
+  try {
+    let updatedCampus = await axios.put(`/api/campuses/${campus.id}`, campus);
+    dispatch(ac.editCampus(updatedCampus));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 //Single campus
 export const fetchCampusThunk = (id) => async (dispatch) => {
-  // thunk creator would not an be async function 
+  // thunk creator would not an be async function
   // if using Promise.then:
   // return axios
   //   .get(`/api/campuses/${id}`)
