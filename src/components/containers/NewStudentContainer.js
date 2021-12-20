@@ -12,9 +12,9 @@ class NewStudentContainer extends Component {
         this.state = {
           firstname: "",
           lastname: "",
-          email:"",
-          imageUrl:"",
-          gpa:"",
+          imageURL: "",
+          email: "",
+          gpa: "",
           campusId: null,
           redirect: false,
           redirectId: null
@@ -31,16 +31,16 @@ class NewStudentContainer extends Component {
         event.preventDefault();
 
         let student = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            email:this.state.email,
-            imageUrl:this.state.imageUrl,
-            gpa:this.state.gpa,
-            campusId: this.state.campusId
+          firstname: this.state.firstname,
+          lastname: this.state.lastname,
+          imageURL: this.state.imageURL,
+          email: this.state.email,
+          gpa: this.state.gpa,
+          campusId: this.state.campusId
         };
 
-        if(student.imageUrl.length===0){
-          student.imageUrl = "https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg"
+        if (student.imageURL.length === 0) {
+          student.imageURL = "https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg"
         }
 
         let newStudent = await this.props.addStudent(student);
@@ -48,9 +48,9 @@ class NewStudentContainer extends Component {
         this.setState({
           firstname: "",
           lastname: "",
-          email:"",
-          imageUrl:"",
-          gpa:"",
+          imageURL: "",
+          email: "",
+          gpa: "",
           campusId: null,
           redirect: true,
           redirectId: newStudent.id
