@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles( () => ({
-
+  formContainer:{
     width: '500px',
     backgroundColor: '#f0f0f5',
     borderRadius: '5px',
@@ -15,8 +15,8 @@ const useStyles = makeStyles( () => ({
   title: {
     flexGrow: 1,
     textAlign: 'left',
-    textDecoration: 'none'
-
+    textDecoration: 'none',
+  },
   customizeAppBar:{
     backgroundColor: '#11153e',
     shadows: ['none'],
