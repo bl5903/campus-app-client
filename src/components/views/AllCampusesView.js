@@ -1,10 +1,10 @@
+import PropTypes from "prop-types";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -36,8 +36,10 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+
 const AllCampusesView = (props) => {
   const classes = useStyles();
+  const{campuses, deleteCampus} = props;
   if (!props.allCampuses.length) {
     return <div>There are no campuses.</div>;
   }
@@ -69,15 +71,18 @@ const AllCampusesView = (props) => {
           </Link>
         </Toolbar>
       </AppBar>
-      
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
           <Link to={`/campus/${campus.id}`}>
             <h1>{campus.name}</h1>
           </Link>
+          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
           <p>{campus.description}</p>
         </div>
       ))}
+      <Link to={`/newCampus`}>
+        <button>Add Campus</button>
+      </Link>
     </div>
   );
 };
