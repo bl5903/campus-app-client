@@ -3,21 +3,18 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import NewCampusView from '../views/NewCampusView';
-import { addStudentThunk } from '../../store/thunks';
+import { addCampusThunk } from '../../store/thunks';
 
 
 class NewCampusContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-
           name: "",
           description: "",
-          imageUrl: "",
+          imageURL: "",
           address: "",
-          campusId: null,
           redirect: false,
-
           redirectId: null
         };
     }
@@ -32,26 +29,24 @@ class NewCampusContainer extends Component {
         event.preventDefault();
 
         let campus = {
-
-            campusname: this.state.name,
+            name: this.state.name,
             description: this.state.description,
-            imageUrl: this.state.imageUrl,
-            address: this.state.address,
-            campusId: this.state.campusId
+            imageURL: this.state.imageURL,
+            address: this.state.address
         };
-        if(campus.imageUrl.length===0){
-          campus.imageUrl = "https://www.uc.edu/news/articles/2021/08/n21024100/jcr:content/image.img.cq5dam.thumbnail.500.500.jpg/1628635953156"
+
+        if (campus.imageURL.length === 0) {
+            campus.imageURL = "https://cdn2.iconfinder.com/data/icons/essential-set-2-1/64/map_location-placeholder-pin-location_1-512.png"
         }
+
         let newCampus = await this.props.addCampus(campus);
 
         this.setState({
           name: "",
           description: "",
-          imageUrl: "",
+          imageURL: "",
           address: "",
-          campusId: null,
           redirect: true,
-
           redirectId: newCampus.id
         });
     }
@@ -65,11 +60,9 @@ class NewCampusContainer extends Component {
           return (<Redirect to={`/campus/${this.state.redirectId}`}/>)
         }
         return (
-
           <NewCampusView
             handleChange = {this.handleChange}
             handleSubmit={this.handleSubmit}
-
           />
         );
     }
@@ -77,10 +70,8 @@ class NewCampusContainer extends Component {
 
 const mapDispatch = (dispatch) => {
     return({
-        addCampus: (campus) => dispatch(addStudentThunk(campus)),
+        addCampus: (campus) => dispatch(addCampusThunk(campus)),
     })
 }
 
-
 export default connect(null, mapDispatch)(NewCampusContainer);
-
