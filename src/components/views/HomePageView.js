@@ -16,10 +16,10 @@ const useStyles = makeStyles(theme => ({
     fontType: 'bold',
     fontFamily: 'Courier, sans-serif', 
     fontSize: '35px', 
-    color: '#CDDC39'
+    color: '#EAE0D5'
   },
   appBar:{
-    backgroundColor: '#11153e',
+    backgroundColor: '#087E8B',
     shadows: ['none'],
   },
   greeting:{
@@ -46,13 +46,13 @@ const HomePageView = () => {
           </Typography>
 
           <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+            <Button variant="contained" color="#979DAC" style={{marginRight: '10px'}}>
               All Campuses
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="#979DAC">
               All Students
             </Button>
           </Link>
