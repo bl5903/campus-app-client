@@ -2,8 +2,10 @@
 
 const CampusView = (props) => {
   const {campus} = props;
+  if (campus.students.length === 0)
+    return("No students");
   return (
-    <div>      
+    <div>
       <h1>{campus.name}</h1>
       <p>{campus.description}</p>
       <ul>

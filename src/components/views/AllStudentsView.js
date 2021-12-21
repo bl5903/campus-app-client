@@ -14,8 +14,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: 'left',
     fontType: 'bold',
-    fontFamily: 'Courier, sans-serif', 
-    fontSize: '35px', 
+    fontFamily: 'Courier, sans-serif',
+    fontSize: '35px',
     color: '#EAE0D5'
   },
   appBar:{
@@ -49,7 +49,7 @@ const AllStudentsView = (props) => {
     </div>
     );
   }
-  
+
   return (
     <div className={classes.root}>
       <AppBar position="static" elevation={0} className={classes.appBar}>
@@ -77,7 +77,7 @@ const AllStudentsView = (props) => {
           </Link>
         </Toolbar>
       </AppBar>
-      
+
       {students.map((student) => {
         let name = student.firstname + " " + student.lastname;
         return (
@@ -92,6 +92,9 @@ const AllStudentsView = (props) => {
       )}
       <Link to={`/newstudent`}>
         <button>Add New Student</button>
+      </Link>
+      <Link to={'/editStudent'}>
+        <button>Edit Student</button>
       </Link>
     </div>
   );

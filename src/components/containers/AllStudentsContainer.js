@@ -10,7 +10,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
-import { 
+import {
   fetchAllStudentsThunk,
   deleteStudentThunk
 } from '../../store/thunks';
@@ -24,7 +24,7 @@ class AllStudentsContainer extends Component {
     render(){
         return(
             <div>
-                <AllStudentsView 
+                <AllStudentsView
                   students={this.props.allStudents}
                   deleteStudent={this.props.deleteStudent}   
                 />
