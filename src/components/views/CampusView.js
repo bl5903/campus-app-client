@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: 'left',
     fontType: 'bold',
-    fontFamily: 'Courier, sans-serif',
-    fontSize: '35px',
+    fontFamily: 'Courier, sans-serif', 
+    fontSize: '35px', 
     color: '#EAE0D5'
   },
   appBar:{
@@ -40,10 +40,33 @@ const useStyles = makeStyles(theme => ({
 const CampusView = (props) => {
   const classes = useStyles();
   const {campus} = props;
-  if (campus.students.length === 0)
-    return("No students");
   return (
-    <div>
+    <div className={classes.root}>
+      <AppBar position="static" elevation={0} className={classes.appBar}>
+        <Toolbar>
+          <Typography variant="h6" className={classes.title} color="inherit" >
+            CRUD App
+          </Typography>
+
+          <Link className={classes.links} to={'/'} >
+            <Button variant="contained" color="#979DAC" style={{marginRight: '10px'}}>
+              HomePage
+            </Button>
+          </Link>
+
+          <Link className={classes.links} to={'/campuses'} >
+            <Button variant="contained" color="#979DAC" style={{marginRight: '10px'}}>
+              All Campuses
+            </Button>
+          </Link>
+
+          <Link className={classes.links} to={'/students'} >
+            <Button variant="contained" color="#979DAC">
+              All Students
+            </Button>
+          </Link>
+        </Toolbar>
+      </AppBar>      
       <h1>{campus.name}</h1>
       <img src={campus.imageUrl} className="campus-image" alt= "campus image"/>
       <p>{campus.description}</p>
