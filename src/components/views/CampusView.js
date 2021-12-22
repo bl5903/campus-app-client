@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: 'left',
     fontType: 'bold',
-    fontFamily: 'Courier, sans-serif', 
-    fontSize: '35px', 
+    fontFamily: 'Courier, sans-serif',
+    fontSize: '35px',
     color: '#EAE0D5'
   },
   appBar:{
@@ -66,7 +66,7 @@ const CampusView = (props) => {
             </Button>
           </Link>
         </Toolbar>
-      </AppBar>      
+      </AppBar>
       <h1>{campus.name}</h1>
       <img src={campus.imageUrl} className="campus-image" alt= "campus image"/>
       <p>{campus.description}</p>

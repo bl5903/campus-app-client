@@ -14,8 +14,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: 'left',
     fontType: 'bold',
-    fontFamily: 'Courier, sans-serif', 
-    fontSize: '35px', 
+    fontFamily: 'Courier, sans-serif',
+    fontSize: '35px',
     color: '#EAE0D5'
   },
   appBar:{
@@ -80,6 +80,9 @@ const AllCampusesView = (props) => {
       ))}
       <Link to={`/newCampus`}>
         <button>Add Campus</button>
+      </Link>
+      <Link to={`/editCampus`}>
+        <button>Edit Campus</button>
       </Link>
     </div>
   );
