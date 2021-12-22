@@ -66,6 +66,8 @@ const StudentView = (props) => {
         </Toolbar>
       </AppBar>
       <h1>{student.firstname + " " + student.lastname}</h1>
+      <p>{student.email}</p>
+      <p>{student.gpa}</p>
       <h3>{student.campus.name}</h3>
     </div>
   );
