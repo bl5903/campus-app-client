@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Link } from "react-router-dom";
 
+import "../css/Student.css"
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -66,6 +68,7 @@ const StudentView = (props) => {
         </Toolbar>
       </AppBar>
       <h1>{student.firstname + " " + student.lastname}</h1>
+      <img src={student.imageUrl} className="student-image" alt= "student image"/>
       <p>{student.email}</p>
       <p>{student.gpa}</p>
       <h3>{student.campus.name}</h3>
