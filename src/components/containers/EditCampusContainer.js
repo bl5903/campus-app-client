@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from "prop-types";
 
 import EditCampusView from '../views/EditCampusView';
-import { addCampusThunk , editCampusThunk } from '../../store/thunks';
+import { editCampusThunk, fetchCampusThunk} from '../../store/thunks';
 
 
 class EditCampusContainer extends Component {
@@ -14,7 +15,9 @@ class EditCampusContainer extends Component {
           description: "",
           imageURL: "",
           address: "",
-          redirect: false,
+          campus: this.props.campus,
+          campusId: this.props.match.params.id,
+          redirect: false, 
           redirectId: null
         };
     }
@@ -32,7 +35,8 @@ class EditCampusContainer extends Component {
             name: this.state.name,
             description: this.state.description,
             imageURL: this.state.imageURL,
-            address: this.state.address
+            address: this.state.address,
+            id: this.state.campusId
         };
 
         if (campus.imageURL.length === 0) {
@@ -41,14 +45,14 @@ class EditCampusContainer extends Component {
 
         let editCampus = await this.props.editCampus(campus);
 
-        this.setState({
-          name: "",
-          description: "",
-          imageURL: "",
-          address: "",
-          redirect: true,
-          redirectId: this.state.campusId
-        });
+          this.setState({
+            name: "", 
+            imageURL: "", 
+            address: "",
+            description: "", 
+            redirect: true, 
+            redirectId: this.state.campusId
+          });
     }
 
     componentWillUnmount() {
@@ -69,11 +73,22 @@ class EditCampusContainer extends Component {
     }
 }
 
+const mapState = (state) => {
+  return {
+    campus: state.campus,
+  };
+};
+
 const mapDispatch = (dispatch) => {
     return({
-      addCampus: (campus) => dispatch(addCampusThunk(campus)),
+      fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
       editCampus: (campus) => dispatch(editCampusThunk(campus)),
     })
 }
 
-export default connect(null, mapDispatch)(EditCampusContainer);
+EditCampusContainer.propTypes = {
+  fetchCampus: PropTypes.func.isRequired,
+  editCampus: PropTypes.func.isRequired,
+};
+
+export default connect(mapState, mapDispatch)(EditCampusContainer);
