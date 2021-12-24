@@ -73,12 +73,6 @@ class EditCampusContainer extends Component {
     }
 }
 
-const mapState = (state) => {
-  return {
-    campus: state.campus,
-  };
-};
-
 const mapDispatch = (dispatch) => {
     return({
       fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
@@ -91,4 +85,4 @@ EditCampusContainer.propTypes = {
   editCampus: PropTypes.func.isRequired,
 };
 
-export default connect(mapState, mapDispatch)(EditCampusContainer);
+export default connect(null, mapDispatch)(EditCampusContainer);
