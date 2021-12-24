@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from "prop-types";
 
 import EditStudentView from '../views/EditStudentView';
-import { addStudentThunk , editStudentThunk } from '../../store/thunks';
+import { fetchStudentThunk , editStudentThunk } from '../../store/thunks';
 
 
 class EditStudentContainer extends Component {
@@ -15,7 +16,8 @@ class EditStudentContainer extends Component {
           imageURL: "",
           email: "",
           gpa: "",
-          campusId: null,
+          student: this.props.student,
+          studentId: this.props.match.params.id,
           redirect: false,
           redirectId: null
         };
@@ -36,7 +38,7 @@ class EditStudentContainer extends Component {
           imageURL: this.state.imageURL,
           email: this.state.email,
           gpa: this.state.gpa,
-          campusId: this.state.campusId
+          id: this.state.campusId
         };
 
         if (student.imageURL.length === 0) {
@@ -51,7 +53,6 @@ class EditStudentContainer extends Component {
           imageURL: "",
           email: "",
           gpa: "",
-          campusId: null,
           redirect: true,
           redirectId: this.state.campusId
         });
@@ -75,11 +76,22 @@ class EditStudentContainer extends Component {
     }
 }
 
+const mapState = (state) => {
+  return {
+    student: state.student,
+  };
+};
+
 const mapDispatch = (dispatch) => {
     return({
-        addStudent: (student) => dispatch(addStudentThunk(student)),
+        fetchStudent: (id) => dispatch(fetchStudentThunk(id)),
         editStudent: (student) => dispatch(editStudentThunk(student)),
     })
 }
 
-export default connect(null, mapDispatch)(EditStudentContainer);
+EditStudentContainer.propTypes = {
+  fetchStudent: PropTypes.func.isRequired,
+  editStudent: PropTypes.func.isRequired,
+};
+
+export default connect(mapState, mapDispatch)(EditStudentContainer);
